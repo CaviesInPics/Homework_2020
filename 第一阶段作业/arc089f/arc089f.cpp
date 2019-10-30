@@ -17,50 +17,6 @@ inline int qpow(int x, int y)
 string s;
 int n, k;
 
-#define N n
-#define K k
-bool C(vector<int> &v) {
-	bool used[70] = {};
-	int pos[70];
-	int now= 0;
-	for (int i = 0; i < v.size(); i++) {
-		while (now < s.size()) {
-			if (s[now] == 'r') break;
-			now++;
-		}
-		if (now == s.size()) return 0;
-		used[now] = 1;
-		pos[i] = now;
-		now++;
-	}
-	for (int i = 0; i < v.size(); i++) {
-		if (v[i] == 1) break;
-		now = pos[i] + 1;
-		while (now < s.size()) {
-			if (!used[now] && s[now] == 'b') break;
-			now++;
-		}
-		if (now == s.size()) return 0;
-		used[now] = 1;
-		pos[i] = now;
-	}
-	for (int i = 0; i < v.size(); i++) {
-		if (v[i] <= 2) break;
-		int cnt = 0;
-		now = pos[i] + 1;
-		while (now < s.size()) {
-			if (!used[now]) {
-				used[now] = 1;
-				cnt++;
-			}
-			if (cnt >= v[i] - 2) break;
-			now++;
- 		}
-		if (now == s.size()) return 0;
-	}
-	return 1;
-}
-
 bool check(vector<int> &v)
 {
 	static int pos[75], use[75];
