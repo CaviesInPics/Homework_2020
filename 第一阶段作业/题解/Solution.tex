@@ -9,7 +9,7 @@
 \usepackage{graphicx}
 \setlength{\parindent}{2em}
 \title{IOI2020 中国国家集训队第一阶段作业\\解题报告}
-\author{党星宇}
+\author{成都市第七中学\ 党星宇}
 \date{2019.10}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -90,6 +90,17 @@ $\cdots$
 \end{itemize}
 
 足以通过本题。
+
+我们考虑对于一个等价类集合$f$如何统计它的方案数。
+
+首先考虑将每一段作为整体排列的方案数，显然是$\frac{|f|!}{\prod_{i=1}^{n}cnt_i!}$，其中$cnt_i$表示$f_k=i$的$k$的个数。
+
+然后我们考虑原序列被划分成了多少个颜色相同的连续段。
+
+容易发现除了Group 1只能是一段$R$之外，其余的Group x$(x\ge 1)$都可以是$(R)B...B(R)$（长度为$2x-1$），左右两个$R$可以为空的形式。而为白色的段最左边和最右边可以为空，而在两个Group之间的白色段不能为空。故用挡板法很容易得到这部分的方案数为
+$$
+\binom{N + 1 + \sum_{v\in f, v\ge 2} v\times 2}{\sum_{v\in f} v\times 2}
+$$
 
 \subsection{总结}
 本题是一道经典的atcoder风格计数题目，难度较大，主要考察了选手对于计数问题模型的分析能力。
@@ -195,4 +206,4 @@ $1\le k\le 7,1\le n\le 1000$。
 \subsection{总结}
 本题难度较低，代码实现也很简单。考察了选手对于基础的计算几何能力以及按照顺序枚举判断依次考虑每一个元素的方法，是一道基础的计算几何题目。
 
-\end{document}
+\end{document} 
