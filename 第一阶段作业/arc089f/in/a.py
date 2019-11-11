@@ -1,3 +1,3 @@
 import os
-for i in range(4, 112):
-    os.rename("1_%03d.txt"%i, str(i)+".in")
+for i in range(1, 112):
+    os.rename(str(i)+".in","a%d.in"%i)

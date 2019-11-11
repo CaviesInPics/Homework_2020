@@ -1,3 +1,3 @@
 import os
-for i in range(1, 4):
-    os.rename("0_%03d.txt"%i, str(i)+".out")
+for i in range(5, 112):
+    os.rename("1_%03d.txt"%i, "a"+str(i)+".out")
