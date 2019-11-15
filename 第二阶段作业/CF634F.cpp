@@ -12,7 +12,7 @@ inline int read()
 
 const int MAXN = 3005;
 multiset<int> s;
-int r, c, k n, x[MAXN], y[MAXN]; ll ans = 0;
+int r, c, k, n, x[MAXN], y[MAXN]; ll ans = 0;
 vector<int> foo[MAXN];
 
 int main()
