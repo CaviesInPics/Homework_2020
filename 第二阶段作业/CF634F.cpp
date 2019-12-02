@@ -22,27 +22,27 @@ int main()
 		x[i] = read(), y[i] = read();
 	for (int i = 1; i <= n; i ++)
 		foo[x[i]].push_back(i);
-	for (int l = 1; l <= n; l ++)
+	for (int l = 1; l <= ::r; l ++)
 	{
 		s.clear();
-		for (int i = 0; i <= k; i ++)
+		for (int i = 0; i <= k + 1; i ++)
 			s.insert(0), s.insert(c + 1);
-		for (int r = l; r <= n; r ++)
+		for (int r = l; r <= ::r; r ++)
 		{
-			for (int cur : foo[r])
+			for (auto cur : foo[r])
 			{
-				s.insert(cur);
-				auto it = s.find(cur);
-				static int bar[25];
-				for (int i = 0; i <= k; i ++) it --;
-				for (int i = 0; i <= k; i ++) bar[i] = *it ++;
-				it ++;
-				for (int i = 1; i <= k; i ++) bar[i + k] = *it ++;
-				for (int i = k + 1; i <= k + k; i ++)
-					ans += 1LL * (bar[i] - bar[i - 1]) * (bar[i - k] - bar[i - k - 1]);
+				auto it = s.insert(y[cur]), it2 = it;
+				assert(it != s.end() && *it == y[cur]);
+				static int pos[MAXN];
+				for (int i = k; i >= 0; i --) pos[i] = *it --;
+				for (int i = k + 1; i <= 2 * k; i ++) pos[i] = *(++ it2);
+//				for (int i = 0; i <= 2 * k; i ++) printf("%d ", pos[i]); puts("");
+				for (int i = k; i <= 2 * k - 1; i ++)
+					ans += 1LL * (pos[i + 1] - pos[i]) * (::r - r + 1) * (pos[i - k + 1] - pos[i - k]);
+//				cerr << ans << endl;
 			}
 		}
-	}	
-
+	}
+	printf("%lld\n", ans);
 	return 0;
 }
