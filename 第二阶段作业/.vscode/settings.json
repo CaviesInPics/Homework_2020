@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"bitset": "cpp",
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"ostream": "cpp"
 	}
 }
